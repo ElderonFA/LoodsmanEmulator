@@ -23,7 +23,6 @@ namespace LoodsmanEmulator
         Dictionary<string, string> typesDictIDName = new Dictionary<string, string>();
 
         private static string imagesPath = "D:\\Projects VS\\LoodsmanEmulator\\images\\";
-        //test commit
 
         public INetPluginCall NPC { get; }
 
