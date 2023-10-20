@@ -10,9 +10,7 @@ namespace LoodsmanEmulator
 {
     public static class Utils
     {
-        /// <summary>
-        /// Преобразует массив байт в изображение с прозрачностью
-        /// </summary>
+        /// <summary> Преобразует массив байт в изображение с прозрачностью </summary>
         public static Image byteArrayToImage(byte[] bytesArr)
         {
             using (MemoryStream memstr = new MemoryStream(bytesArr))
@@ -25,9 +23,7 @@ namespace LoodsmanEmulator
             }
         }
 
-        /// <summary>
-        /// Приводит числовое значение статуса БП к словесному
-        /// </summary>
+        /// <summary> Приводит числовое значение статуса БП к словесному </summary>
         public static string FormatBPState(string nonFormatValue)
         {
             switch (nonFormatValue)
