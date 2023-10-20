@@ -10,15 +10,12 @@ namespace LoodsmanEmulator
     public class TypesDataKeeper
     {
         private Dictionary<string, int> typesIdInImageListWithID;
-        private Dictionary<string, int> typesIdInImageListWithNAME;
 
         private Dictionary<string, string> typesIdxName;
 
         public TypesDataKeeper()
         {
             typesIdInImageListWithID   = new Dictionary<string, int>();
-            typesIdInImageListWithNAME = new Dictionary<string, int>();
-
             typesIdxName    = new Dictionary<string, string>();
         }
 
@@ -26,8 +23,6 @@ namespace LoodsmanEmulator
         public void AddInfo(string typeID, string typeName, int idInImageList)
         {
             typesIdInImageListWithID[typeID]     = idInImageList;
-            typesIdInImageListWithNAME[typeName] = idInImageList;
-
             typesIdxName[typeID] = typeName;
         }
 
@@ -40,13 +35,20 @@ namespace LoodsmanEmulator
         /// <summary> Возвращает индекс типа в списке ImageList через название типа</summary>
         public int GetImgIndexByName(object typeName)
         {
-            return typesIdInImageListWithNAME[typeName.ToString()];
+            var typeID = GetTypeIdByName(typeName);
+            return typesIdInImageListWithID[typeID];
         }
 
         /// <summary> Возвращает название типа по ID </summary>
         public string GetTypeNameById(object typeId)
         {
             return typesIdxName[typeId.ToString()];
+        }
+
+        /// <summary> Возвращает название типа по ID </summary>
+        public string GetTypeIdByName(object typeName)
+        {
+            return typesIdxName.First(x => x.Value == typeName.ToString()).Key;
         }
     }
 }
