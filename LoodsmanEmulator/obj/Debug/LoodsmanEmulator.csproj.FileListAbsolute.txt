@@ -1,0 +1,19 @@
+C:\ProgramData\ASCON\LOODSMAN\PluginStore\LoodsmanEmulator\LoodsmanEmulator.dll
+C:\ProgramData\ASCON\LOODSMAN\PluginStore\LoodsmanEmulator\LoodsmanEmulator.pdb
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.csproj.AssemblyReference.cache
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.csproj.GenerateResource.cache
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.csproj.CoreCompileInputs.cache
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.pdb
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.Ask.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.BOSimple.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.DataProvider.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.Loodsman.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.LoodsmanObjects.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\Interop.PDMObjects.dll
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.csproj.ResolveComReference.cache
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.csproj.CopyComplete
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.mainForm.resources
+C:\ProgramData\ASCON\LOODSMAN\PluginStore\LoodsmanEmulator\LoodsmanEmulator.dll.config
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.Properties.Resources.resources
+D:\Projects VS\LoodsmanEmulator\LoodsmanEmulator\obj\Debug\LoodsmanEmulator.finderForm.resources
