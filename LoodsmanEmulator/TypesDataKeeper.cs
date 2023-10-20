@@ -9,46 +9,46 @@ namespace LoodsmanEmulator
 {
     public class TypesDataKeeper
     {
-        private Dictionary<string, int> typesIdInImageListWithID;
+        private Dictionary<string, int> typesIdInImgList;
 
-        private Dictionary<string, string> typesIdxName;
+        private Dictionary<string, string> typesIdAndName;
 
         public TypesDataKeeper()
         {
-            typesIdInImageListWithID   = new Dictionary<string, int>();
-            typesIdxName    = new Dictionary<string, string>();
+            typesIdInImgList = new Dictionary<string, int>();
+            typesIdAndName   = new Dictionary<string, string>();
         }
 
-        /// <summary>Добавление данных в словари </summary>
+        /// <summary> Добавляет данные в словари </summary>
         public void AddInfo(string typeID, string typeName, int idInImageList)
         {
-            typesIdInImageListWithID[typeID]     = idInImageList;
-            typesIdxName[typeID] = typeName;
+            typesIdInImgList[typeID] = idInImageList;
+            typesIdAndName[typeID]   = typeName;
         }
 
-        /// <summary> Возвращает индекс типа в списке ImageList через ID</summary>
+        /// <summary> Возвращает индекс типа в списке ImageList через ID </summary>
         public int GetImgIndexByID(object typeId)
         {
-            return typesIdInImageListWithID[typeId.ToString()];
+            return typesIdInImgList[typeId.ToString()];
         }
 
-        /// <summary> Возвращает индекс типа в списке ImageList через название типа</summary>
+        /// <summary> Возвращает индекс типа в списке ImageList через название типа </summary>
         public int GetImgIndexByName(object typeName)
         {
             var typeID = GetTypeIdByName(typeName);
-            return typesIdInImageListWithID[typeID];
+            return typesIdInImgList[typeID];
         }
 
         /// <summary> Возвращает название типа по ID </summary>
         public string GetTypeNameById(object typeId)
         {
-            return typesIdxName[typeId.ToString()];
+            return typesIdAndName[typeId.ToString()];
         }
 
-        /// <summary> Возвращает название типа по ID </summary>
+        /// <summary> Возвращает ID типа по названию </summary>
         public string GetTypeIdByName(object typeName)
         {
-            return typesIdxName.First(x => x.Value == typeName.ToString()).Key;
+            return typesIdAndName.First(x => x.Value == typeName.ToString()).Key;
         }
     }
 }
