@@ -19,12 +19,11 @@ namespace LoodsmanEmulator
     {
         private string dataBaseName;
 
-        Dictionary<string, int> typesDictNameAndIdImageList = new Dictionary<string, int>();
-        Dictionary<string, string> typesDictIDName = new Dictionary<string, string>();
-
         private static string imagesPath = "D:\\Projects VS\\LoodsmanEmulator\\images\\";
 
         public INetPluginCall NPC { get; }
+
+        private TypesDataKeeper typesDataKeeper = new TypesDataKeeper();
 
         public mainForm(INetPluginCall call)
         {
@@ -45,9 +44,10 @@ namespace LoodsmanEmulator
 
                 var tID = td["_ID"].ToString();
                 var tNAME = td["_TYPENAME"].ToString();
+                var idx = mainTreeView.ImageList.Images.Count;
 
-                typesDictNameAndIdImageList[tNAME] = mainTreeView.ImageList.Images.Count;
-                typesDictIDName[tID] = tNAME;
+                typesDataKeeper.AddInfo(tID, tNAME, idx);
+
                 mainTreeView.ImageList.Images.Add(img);
             }
 
@@ -59,7 +59,7 @@ namespace LoodsmanEmulator
                 var node = mainTreeView.Nodes.Add(row["_PRODUCT"].ToString());
 
                 node.Tag = new TagData(row["_ID_VERSION"], row["_VERSION"], row["_PRODUCT"], row["_TYPE"], row["_DOCUMENT"]);
-                node.ImageIndex = typesDictNameAndIdImageList[row["_TYPE"].ToString()];
+                node.ImageIndex = typesDataKeeper.GetImgIndexByName(row["_TYPE"]);  //= typesDictNameAndIdImageList[row["_TYPE"].ToString()];
 
                 node.Nodes.Add("Загрузка...");
             }
@@ -153,15 +153,15 @@ namespace LoodsmanEmulator
                 {
                     var ID_VERS = row["_ID_VERSION"];
                     var VERS    = row["_VERSION"];
-                    var PRODUCT = row["_PRODUCT"].ToString();
-                    var TYPE    = row["_TYPE"].ToString();
+                    var PRODUCT = row["_PRODUCT"];
+                    var TYPE    = row["_TYPE"];
                     var DOC     = row["_DOCUMENT"];
 
-                    var newNode = e.Node.Nodes.Add(PRODUCT);
+                    var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
                     newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, DOC);
 
-                    newNode.ImageIndex = typesDictNameAndIdImageList[TYPE];
+                    newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
 
                     newNode.Nodes.Add("Загрузка...");
                 }
@@ -172,15 +172,15 @@ namespace LoodsmanEmulator
                 {
                     var ID_VERS = row["_ID_VERSION"];
                     var VERS    = row["_VERSION"];
-                    var PRODUCT = row["_PRODUCT"].ToString();
-                    var TYPE    = row["_TYPE"].ToString();
+                    var PRODUCT = row["_PRODUCT"];
+                    var TYPE    = row["_TYPE"];
                     var DOC     = row["_DOCUMENT"];
 
-                    var newNode = e.Node.Nodes.Add(PRODUCT);
+                    var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
                     newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, DOC);
 
-                    newNode.ImageIndex = typesDictNameAndIdImageList[TYPE];
+                    newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
                 }
             }
         }
