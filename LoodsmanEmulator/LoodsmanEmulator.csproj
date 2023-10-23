@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinkData.cs" />
+    <Compile Include="LinksDataKeeper.cs" />
     <Compile Include="StarterClass.cs" />
     <Compile Include="finderForm.cs">
       <SubType>Form</SubType>

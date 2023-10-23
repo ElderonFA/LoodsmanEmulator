@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,18 +45,17 @@
             this.mainTreeView = new System.Windows.Forms.TreeView();
             this.findTextBox = new System.Windows.Forms.TextBox();
             this.findButton = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listViewLinksInfo = new System.Windows.Forms.ListView();
+            this.comboBoxLinkNames = new System.Windows.Forms.ComboBox();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Location = new System.Drawing.Point(603, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(536, 13);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.Text = "Атрибуты и свойства";
             // 
             // textBox2
             // 
@@ -85,7 +83,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(13, 564);
+            this.textBox1.Location = new System.Drawing.Point(12, 564);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(584, 13);
@@ -156,9 +154,9 @@
             this.Attribute,
             this.Value});
             this.attributesListView.HideSelection = false;
-            this.attributesListView.Location = new System.Drawing.Point(603, 35);
+            this.attributesListView.Location = new System.Drawing.Point(-4, 0);
             this.attributesListView.Name = "attributesListView";
-            this.attributesListView.Size = new System.Drawing.Size(536, 515);
+            this.attributesListView.Size = new System.Drawing.Size(531, 513);
             this.attributesListView.TabIndex = 9;
             this.attributesListView.UseCompatibleStateImageBehavior = false;
             this.attributesListView.View = System.Windows.Forms.View.Details;
@@ -167,13 +165,13 @@
             // 
             this.Attribute.Name = "Attribute";
             this.Attribute.Text = "Атрибут";
-            this.Attribute.Width = 216;
+            this.Attribute.Width = 265;
             // 
             // Value
             // 
             this.Value.Name = "Value";
             this.Value.Text = "Значение";
-            this.Value.Width = 312;
+            this.Value.Width = 255;
             // 
             // mainTreeView
             // 
@@ -202,17 +200,82 @@
             this.findButton.UseVisualStyleBackColor = true;
             this.findButton.Click += new System.EventHandler(this.findButton_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(604, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(535, 538);
+            this.tabControl1.TabIndex = 14;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.attributesListView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(527, 512);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Атрибуты";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.listViewLinksInfo);
+            this.tabPage2.Controls.Add(this.comboBoxLinkNames);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(527, 512);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Связи";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // listViewLinksInfo
+            // 
+            this.listViewLinksInfo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewLinksInfo.HideSelection = false;
+            this.listViewLinksInfo.Location = new System.Drawing.Point(-4, 28);
+            this.listViewLinksInfo.Name = "listViewLinksInfo";
+            this.listViewLinksInfo.Size = new System.Drawing.Size(531, 485);
+            this.listViewLinksInfo.TabIndex = 1;
+            this.listViewLinksInfo.UseCompatibleStateImageBehavior = false;
+            this.listViewLinksInfo.View = System.Windows.Forms.View.Details;
+            // 
+            // comboBoxLinkNames
+            // 
+            this.comboBoxLinkNames.FormattingEnabled = true;
+            this.comboBoxLinkNames.Location = new System.Drawing.Point(3, 3);
+            this.comboBoxLinkNames.Name = "comboBoxLinkNames";
+            this.comboBoxLinkNames.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxLinkNames.Sorted = true;
+            this.comboBoxLinkNames.TabIndex = 0;
+            this.comboBoxLinkNames.SelectedIndexChanged += new System.EventHandler(this.comboBoxLinkNames_SelectedIndexChanged);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Обозначение";
+            this.columnHeader2.Width = 388;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Тип";
+            this.columnHeader3.Width = 133;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1151, 792);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.findButton);
             this.Controls.Add(this.findTextBox);
             this.Controls.Add(this.mainTreeView);
-            this.Controls.Add(this.attributesListView);
             this.Controls.Add(this.infoTextBox);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
@@ -220,14 +283,15 @@
             this.Controls.Add(this.filesListView);
             this.Name = "mainForm";
             this.Text = "Лоцман эмулятор";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox1;
@@ -244,5 +308,12 @@
         private System.Windows.Forms.TreeView mainTreeView;
         private System.Windows.Forms.TextBox findTextBox;
         private System.Windows.Forms.Button findButton;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ComboBox comboBoxLinkNames;
+        private System.Windows.Forms.ListView listViewLinksInfo;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

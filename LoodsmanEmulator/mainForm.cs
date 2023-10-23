@@ -24,6 +24,7 @@ namespace LoodsmanEmulator
         public INetPluginCall NPC { get; }
 
         private TypesDataKeeper typesDataKeeper = new TypesDataKeeper();
+        private LinksDataKeeper linksDataKeeper;
 
         public mainForm(INetPluginCall call)
         {
@@ -34,6 +35,8 @@ namespace LoodsmanEmulator
             NPC = call;
 
             mainTreeView.Sort();
+
+            linksDataKeeper = new LinksDataKeeper(NPC, comboBoxLinkNames, listViewLinksInfo);
 
             //считывание данных о типах
             var typesData = NPC.GetDataTable("GetTypeList");
@@ -75,6 +78,8 @@ namespace LoodsmanEmulator
             UpdateViewFiles(selectedTagData);
 
             UpdateViewBP(selectedTagData);
+
+            linksDataKeeper.UpdateLinkInfoView(selectedTagData.IdVersion);
         }
 
         private void UpdateViewAttributes(TagData data)
@@ -224,7 +229,15 @@ namespace LoodsmanEmulator
             }
         }
 
-        public void CollapseAllInMainTreeView()
+        private void comboBoxLinkNames_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (linksDataKeeper  != null)
+            {
+                linksDataKeeper.SetLinkForSearch(comboBoxLinkNames.SelectedItem.ToString());
+            }
+        }
+
+            public void CollapseAllInMainTreeView()
         {
             mainTreeView.CollapseAll();
         }
