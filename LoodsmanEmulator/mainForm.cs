@@ -56,10 +56,15 @@ namespace LoodsmanEmulator
 
             foreach (DataRow row in catalogsData.Rows)
             {
-                var node = mainTreeView.Nodes.Add(row["_PRODUCT"].ToString());
+                var PRODUCT = row["_PRODUCT"];
+                var VERSION = row["_VERSION"];
+                var TYPE = row["_TYPE"];
+                var isDoc = row["_DOCUMENT"].ToString() == "1" ? true : false;
 
-                node.Tag = new TagData(row["_ID_VERSION"], row["_VERSION"], row["_PRODUCT"], row["_TYPE"], row["_DOCUMENT"]);
-                node.ImageIndex = typesDataKeeper.GetImgIndexByName(row["_TYPE"]);  //= typesDictNameAndIdImageList[row["_TYPE"].ToString()];
+                var node = mainTreeView.Nodes.Add(PRODUCT.ToString());
+
+                node.Tag = new TagData(PRODUCT, VERSION, PRODUCT, TYPE, isDoc);
+                node.ImageIndex = typesDataKeeper.GetImgIndexByName(row["_TYPE"]);
 
                 node.Nodes.Add("Загрузка...");
             }
@@ -147,7 +152,27 @@ namespace LoodsmanEmulator
                 e.Node.Nodes[0].Remove();
 
                 var nTagData = (TagData)e.Node.Tag;
-                var elementsData = NPC.GetDataTable("GetLinkedFast", nTagData.IdVersion, "Состоит из ...", false);
+
+                var data = NPC.GetDataTable("GetTree2", nTagData.IdVersion, "Состоит из ...\x1Документы", 0b00000000);
+
+                foreach (DataRow row in data.Rows)
+                {
+                    var ID_VERS = row["_ID_VERSION"];
+                    var VERS = row["_VERSION"];
+                    var PRODUCT = row["_PRODUCT"];
+                    var TYPE = row["_ID_TYPE"];
+                    var isDoc = row["_ID_LINKTYPE"].ToString() == "Документы" ? true : false;
+
+                    var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
+
+                    newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, isDoc);
+
+                    newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
+
+                    newNode.Nodes.Add("Загрузка...");
+                }
+
+                /*var elementsData = NPC.GetDataTable("GetLinkedFast", nTagData.IdVersion, "Состоит из ...", false);
 
                 foreach (DataRow row in elementsData.Rows)
                 {
@@ -155,7 +180,7 @@ namespace LoodsmanEmulator
                     var VERS    = row["_VERSION"];
                     var PRODUCT = row["_PRODUCT"];
                     var TYPE    = row["_TYPE"];
-                    var DOC     = row["_DOCUMENT"];
+                    var DOC     = row["_DOCUMENT"].ToString() == "1" ? true : false; ;
 
                     var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
@@ -174,14 +199,14 @@ namespace LoodsmanEmulator
                     var VERS    = row["_VERSION"];
                     var PRODUCT = row["_PRODUCT"];
                     var TYPE    = row["_TYPE"];
-                    var DOC     = row["_DOCUMENT"];
+                    var DOC     = row["_DOCUMENT"].ToString() == "1" ? true : false;
 
                     var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
                     newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, DOC);
 
                     newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
-                }
+                }*/
             }
         }
 

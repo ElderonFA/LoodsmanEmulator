@@ -21,13 +21,13 @@ namespace LoodsmanEmulator
             object Product, 
             object idType,
             object Version,
-            object isDoc)
+            bool isDoc)
         {
             this.IdVersion = IdVersion.ToString();
             this.Product   = Product.ToString();
             this.idType    = idType.ToString();
             this.Version   = Version.ToString();
-            this.isDoc     = isDoc.ToString() == "1";
+            this.isDoc     = isDoc;
         }
     }
 }

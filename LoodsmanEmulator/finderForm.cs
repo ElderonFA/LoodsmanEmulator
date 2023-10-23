@@ -66,7 +66,7 @@ namespace LoodsmanEmulator
                 var idtype   = item["_ID_TYPE"].ToString();
                 var dCreate  = item["_CREATED"].ToString();
 
-                var tagData = new TagData(idVer, Ver, mainAttr, idtype, "");
+                var tagData = new TagData(idVer, Ver, mainAttr, idtype, false);
 
                 var row = finderListBox.Items.Add(name);
                 row.Tag = tagData;
