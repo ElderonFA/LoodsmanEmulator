@@ -36,8 +36,6 @@ namespace LoodsmanEmulator
 
             mainTreeView.Sort();
 
-            linksDataKeeper = new LinksDataKeeper(NPC, comboBoxLinkNames, listViewLinksInfo);
-
             //считывание данных о типах
             var typesData = NPC.GetDataTable("GetTypeList");
 
@@ -54,6 +52,8 @@ namespace LoodsmanEmulator
                 mainTreeView.ImageList.Images.Add(img);
             }
 
+            linksDataKeeper = new LinksDataKeeper(NPC, comboBoxLinkNames, listViewLinksInfo, typesDataKeeper.GetAllTypesName());
+
             //сбор и добавление данных о каталогах самого верхнего уровня БД Лоцман
             var catalogsData = NPC.GetDataTable("GetProjectListEx", true);
 
@@ -61,8 +61,8 @@ namespace LoodsmanEmulator
             {
                 var node = mainTreeView.Nodes.Add(row["_PRODUCT"].ToString());
 
-                node.Tag = new TagData(row["_ID_VERSION"], row["_VERSION"], row["_PRODUCT"], row["_TYPE"], row["_DOCUMENT"]);
-                node.ImageIndex = typesDataKeeper.GetImgIndexByName(row["_TYPE"]);  //= typesDictNameAndIdImageList[row["_TYPE"].ToString()];
+                node.Tag = new TagData(row["_ID_VERSION"], row["_PRODUCT"], row["_TYPE"], row["_VERSION"], row["_DOCUMENT"]);
+                node.ImageIndex = typesDataKeeper.GetImgIndexByName(row["_TYPE"]);
 
                 node.Nodes.Add("Загрузка...");
             }
@@ -79,7 +79,8 @@ namespace LoodsmanEmulator
 
             UpdateViewBP(selectedTagData);
 
-            linksDataKeeper.UpdateLinkInfoView(selectedTagData.IdVersion);
+            linksDataKeeper.SetSelectedID(selectedTagData.IdVersion);
+            linksDataKeeper.UpdateListLinksInComboBox(selectedTagData.Type);
         }
 
         private void UpdateViewAttributes(TagData data)
@@ -88,7 +89,7 @@ namespace LoodsmanEmulator
             attributesListView.Groups.Clear();
 
             var attributesData = NPC.GetDataTable("GetInfoAboutVersion",
-                data.idType,
+                data.Type,
                 data.Product,
                 data.Version,
                 data.IdVersion,
@@ -164,7 +165,7 @@ namespace LoodsmanEmulator
 
                     var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
-                    newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, DOC);
+                    newNode.Tag = new TagData(ID_VERS, PRODUCT, TYPE, VERS, DOC);
 
                     newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
 
@@ -183,7 +184,7 @@ namespace LoodsmanEmulator
 
                     var newNode = e.Node.Nodes.Add(PRODUCT.ToString());
 
-                    newNode.Tag = new TagData(ID_VERS, VERS, PRODUCT, TYPE, DOC);
+                    newNode.Tag = new TagData(ID_VERS, PRODUCT, TYPE, VERS, DOC);
 
                     newNode.ImageIndex = typesDataKeeper.GetImgIndexByName(TYPE);
                 }
@@ -231,9 +232,10 @@ namespace LoodsmanEmulator
 
         private void comboBoxLinkNames_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (linksDataKeeper  != null)
+            if (linksDataKeeper != null)
             {
-                linksDataKeeper.SetLinkForSearch(comboBoxLinkNames.SelectedItem.ToString());
+                linksDataKeeper.SetLinkForSearch(comboBoxLinkNames.SelectedItem.ToString()); 
+                linksDataKeeper.UpdateLinkInfoView();
             }
         }
 

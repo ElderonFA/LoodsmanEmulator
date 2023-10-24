@@ -50,5 +50,17 @@ namespace LoodsmanEmulator
         {
             return typesIdAndName.First(x => x.Value == typeName.ToString()).Key;
         }
+
+        public List<string> GetAllTypesName()
+        {
+            var listTypesNames = new List<string>();
+
+            foreach (var a in typesIdAndName)
+            {
+                listTypesNames.Add(a.Value);
+            }
+
+            return listTypesNames;
+        }
     }
 }
